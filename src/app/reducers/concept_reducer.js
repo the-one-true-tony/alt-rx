@@ -7,7 +7,8 @@ import {
 
 const _defaultState = {
   concept: {},
-  selected_concept: {}
+  selected_concept: {},
+  altConcept: [[],[]]
 };
 
 const ConceptReducer = (state = _defaultState, action) => {

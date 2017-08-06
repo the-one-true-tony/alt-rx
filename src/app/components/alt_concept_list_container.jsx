@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import AltConceptList from './alt_concept_list';
-import { fetchAltConcept } from '../actions/concept_actions';
+// import { fetchAltConcept } from '../actions/concept_actions';
 
 const mapStateToProps = ({ ConceptReducer }) => {
   return {
-    selectedConcept: ConceptReducer.selected_concept
+    altConceptList: ConceptReducer.altConcept
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getAltConcept: conceptID => dispatch(fetchAltConcept(conceptID)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   getAltConcept: conceptID => dispatch(fetchAltConcept(conceptID)),
+// });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(AltConceptList);

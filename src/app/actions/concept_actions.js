@@ -34,4 +34,5 @@ export const fetchConcept = (target) => dispatch => (
 export const fetchAltConcept = (target) => dispatch => (
   APIUtil.fetchAltConcept(target)
     .then(concept => dispatch(receiveAltConcept(concept)))
+    .then(() => dispatch(selectConcept(target)))
 );
