@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './css/app.css';
-import SearchBar from './components/searchbar';
-import DrugList from './components/drugList';
+import SearchBarContainer from './components/search_bar_container';
+import ConceptListContainer from './components/concept_list_container';
+import AltConceptListContainer from './components/alt_concept_list_container';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -12,8 +14,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div className="App-body">
-          <SearchBar />
-          <DrugList />
+          <SearchBarContainer />
+          <ConceptListContainer />
+          <AltConceptListContainer />
         </div>
       </div>
     );

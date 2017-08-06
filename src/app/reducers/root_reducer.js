@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import DrugsReducer from './drugs_reducer';
-
+import ConceptReducer from './concept_reducer';
 
 const RootReducer = combineReducers({
-  drugs: DrugsReducer
+  ConceptReducer
 });
 
 export default RootReducer;
