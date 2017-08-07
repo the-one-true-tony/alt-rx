@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class SearchBar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      concept: ""
+      concept: "",
+      conceptNames: []
     };
     this.updateSearchField = this.updateSearchField.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -13,12 +15,18 @@ export default class SearchBar extends Component {
 
   componentDidMount(){
     window.addEventListener('keydown', this.handleKeyPress);
+    axios.get(`https://rxnav.nlm.nih.gov/REST/displaynames`)
+      .then(res => {
+        this.setState({
+          conceptNames: res.data.displayTermsList.term
+        });
+      });
   }
 
   handleKeyPress(e){
-    // console.log(e.keyCode);
     let { concept } = this.state;
     if(e.keyCode === 13 && concept !== ""){
+      this.props.loadConceptList();
       this.props.getConcept(concept);
     }
   }
@@ -27,6 +35,7 @@ export default class SearchBar extends Component {
     e.preventDefault();
     let { concept } = this.state;
     if (concept !== ""){
+      this.props.loadConceptList();
       this.props.getConcept(concept);
     }
   }
@@ -38,18 +47,35 @@ export default class SearchBar extends Component {
 
   render(){
     const { concept } = this.state;
-    return(
-      <div>
-        <input type="input"
-          placeholder="Search for ingredient (eg alavert)"
-          className="search-field"
-          value={concept}
-          onChange={this.updateSearchField} />
+    let errors;
+    if(this.props.errors){
+      errors = (
+        <section>
+          <span className="search-errors">
+            <i className="fa fa-info-circle" aria-hidden="true"></i>
+            &nbsp;
+            {this.props.errors}
+          </span>
+        </section>
+      );
+    }
 
-        <input type="button" value="Search"
-          className="search-button"
-          onClick={this.handleSearch}/>
-      </div>
+    return(
+      <section>
+        { errors }
+        <section>
+          <input type="input"
+            placeholder="Search for ingredient (eg alavert)"
+            className="search-field"
+            value={concept}
+            onChange={this.updateSearchField} />
+
+          <input type="button" value="Search"
+            className="search-button"
+            onClick={this.handleSearch}/>
+        </section>
+
+      </section>
     );
   }
 }

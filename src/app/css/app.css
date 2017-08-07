@@ -18,61 +18,125 @@
   font-size: large;
 }
 
+.search-errors{
+  background: tomato;
+  padding: 5px;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 7px;
+
+}
 .search-field {
-  width: 200px;
+  width: 50%;
+  font-size: 18px;
   margin: 10px;
   padding: 5px;
+  height: 20px;
 }
 
 .search-button {
   padding: 5px;
   color: white;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 18px;
   background-color: cornflowerblue;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid gray;
+  height: 34px;
 }
 
 .search-button:hover {
-  background-color: red;
+  background-color: coral;
+  cursor: pointer;
 }
-
+.concept-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .concept-item {
-  border: 1px solid red;
-  margin: 5px;
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid lightgray;
 }
 
-.selected-concept-item {
+.concept-item-icon {
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  font-size: x-large;
+  color: inherit;
+}
+
+.concept-item-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  margin: 10px;
+}
+
+.selected {
   border: 1px solid cornflowerblue;
   background: cornflowerblue;
-  margin: 5px;
+  color: white;
 }
 
 .concept-item:hover {
-  background: red;
+  background: coral;
+  border-color: coral;
+}
+
+.expand-button {
+  font-size: 16px;
+}
+
+.expand-button:hover {
+  cursor:pointer;
 }
 
 .alt-lists {
   display: flex;
-  border: red 1px solid;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.alt-list h2 {
+  margin: 10px;
 }
 
 .alt-list{
   display: flex;
   flex-direction: column;
   text-align: left;
-  font-size: 12px;
-  margin: 10px
+  font-size: 14px;
+  max-width: 400px;
+  border: lightgray 1px solid;
 }
 
+.alt-list-item{
+  padding: 0px 10px 0px 10px;
+}
+
+.alt-list-item:hover {
+  background: lightgray;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
+@keyframes loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading {
+  animation: loading-spin  infinite 2s linear;
+}
+
 .hidden {
   display: none;
+  transition: visibility 0s, opacity 0.5s linear;
 }

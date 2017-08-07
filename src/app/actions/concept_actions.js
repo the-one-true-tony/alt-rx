@@ -1,5 +1,9 @@
-import * as APIUtil from '../util/concept_api_util';
+import {
+  conceptListStopLoading,
+  altConceptListStopLoading
+} from './loading_actions';
 
+import * as APIUtil from '../util/concept_api_util';
 export const RECEIVE_CONCEPT = 'RECEIVE_CONCEPT';
 export const RECEIVE_ALT_CONCEPT = 'RECEIVE_ALT_CONCEPT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -27,12 +31,25 @@ export const selectConcept = concept => ({
 
 export const fetchConcept = (target) => dispatch => (
   APIUtil.fetchConcept(target)
-    .then(concept => dispatch(receiveConcept(concept)),
-           errors => dispatch(receiveErrors(errors)))
+    .then(concept => dispatch(receiveConcept(concept)))
+    .then(() => dispatch(receiveErrors("")))
+    .then(() => dispatch(conceptListStopLoading()))
+    .then(() => dispatch(receiveAltConcept([[],[]])))
+    .catch(errors => {
+      dispatch(receiveErrors("No matches found"));
+      dispatch(conceptListStopLoading());
+      dispatch(receiveAltConcept([[],[]]));
+      dispatch(receiveConcept({}));
+    })
 );
 
 export const fetchAltConcept = (target) => dispatch => (
   APIUtil.fetchAltConcept(target)
     .then(concept => dispatch(receiveAltConcept(concept)))
+    .then(() => dispatch(altConceptListStopLoading()))
     .then(() => dispatch(selectConcept(target)))
+);
+
+export const fetchNames = () => (
+  APIUtil.fetchNames()
 );

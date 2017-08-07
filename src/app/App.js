@@ -6,7 +6,9 @@ import ConceptListContainer from './components/concept_list_container';
 import AltConceptListContainer from './components/alt_concept_list_container';
 
 class App extends Component {
+  componentWillMount(){
 
+  }
   render() {
     return (
       <div className="App">
@@ -14,6 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div className="App-body">
+          <h2>Search for Similar Medication</h2>
           <SearchBarContainer />
           <ConceptListContainer />
           <AltConceptListContainer />

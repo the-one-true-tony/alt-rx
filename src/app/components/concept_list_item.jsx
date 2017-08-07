@@ -7,7 +7,7 @@ export default class ConceptListItem extends Component {
     let klassName;
 
     if(selected && selected === concept.rxcui){
-      klassName =  "selected-concept-item";
+      klassName =  "concept-item selected";
     } else if(selected && collapsed){
       klassName = "hidden";
     } else {
@@ -21,9 +21,15 @@ export default class ConceptListItem extends Component {
 
     return(
       <section onClick={update} className={klassName}>
-        <p>ID: {concept.rxcui}</p>
-        <p>Name: {concept.name}</p>
-        <p>Synonym: {concept.synonym}</p>
+        <section className="concept-item-icon">
+          <i className={selected === concept.rxcui ? "fa fa-heart" : "hidden"}
+            aria-hidden="true">
+          </i>
+        </section>
+        <section className="concept-item-details">
+          <span>Name: {concept.name}</span>
+          <span>Synonym: {concept.synonym}</span>
+        </section>
       </section>
     );
   }

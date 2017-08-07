@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import AltConceptList from './alt_concept_list';
 // import { fetchAltConcept } from '../actions/concept_actions';
 
-const mapStateToProps = ({ ConceptReducer }) => {
+const mapStateToProps = ({ concept, loading }) => {
   return {
-    altConceptList: ConceptReducer.altConcept
+    altConceptList: concept.altConcept,
+    loading: loading.altConceptList
   };
 };
 

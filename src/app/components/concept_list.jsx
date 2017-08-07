@@ -19,6 +19,7 @@ export default class ConceptList extends Component {
     });
   }
   updateSelected(id){
+    this.props.loadAltConceptList();
     this.setState({
       selectedOption: id,
       collapseList: true
@@ -32,57 +33,48 @@ export default class ConceptList extends Component {
   }
 
   render(){
-    let { conceptList, getAltConcept } = this.props;
+    let { conceptList, getAltConcept, loading } = this.props;
     let { selectedOption, collapseList } = this.state;
 
     const collapseButton = (
-      <div>
+      <span className="expand-button">
         <i className={ collapseList
             ? "fa fa-angle-double-down"
             : "fa fa-angle-double-up" }
           aria-hidden="true"
           onClick={this.toggleCollapse}></i>
-      </div>
+      </span>
     );
 
-    switch (true){
-      case (conceptList.length === 1):
-        return(
-          <ul>
+    if(loading){
+      return(
+        <section>
+          <i className="fa fa-spinner fa-3x loading"></i>
+        </section>
+      );
+    } else if(conceptList.length > 1){
+      return(
+        <section>
+          <section className="concept-list">
+            <h2>Select a Reference Drug</h2>
             {conceptList.map(concept => (
               <ConceptListItem
                 key={concept.rxcui}
                 concept={concept}
                 selectConcept={getAltConcept}
-                selected={selectedOption === concept.rxcui}
+                selected={selectedOption}
                 collapsed={collapseList}
                 updateSelected={this.updateSelected}
               />
             ))}
-          </ul>
-        );
-      case (conceptList.length > 1):
-        return(
-          <section>
-            <ul>
-              {conceptList.map(concept => (
-                <ConceptListItem
-                  key={concept.rxcui}
-                  concept={concept}
-                  selectConcept={getAltConcept}
-                  selected={selectedOption}
-                  collapsed={collapseList}
-                  updateSelected={this.updateSelected}
-                />
-              ))}
-            </ul>
-            { collapseButton }
           </section>
-        );
-      default:
-        return(
-          <p>No matches found</p>
-        );
+          { collapseButton }
+        </section>
+      );
+    } else {
+      return(
+        <div>Lets go find some drugs</div>
+      );
     }
   }
 }

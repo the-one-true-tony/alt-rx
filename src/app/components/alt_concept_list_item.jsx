@@ -1,10 +1,8 @@
 import React from 'react';
 
 export const AltConceptListItem = (props) => {
-  console.log(props);
   return(
-  <div>
+  <div className="alt-list-item">
     <p>{ props.concept.name }</p>
-    <p>{ props.concept.synonym }</p>
   </div>);
 };
