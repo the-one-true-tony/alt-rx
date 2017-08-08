@@ -13,7 +13,7 @@ export default class AltConceptList extends Component {
           <h2>Brand Name Drugs</h2>
           {altConceptList[0].map((concept, i) => (
             <AltConceptListItem
-              key={i + concept.rxcui}
+              key={concept.rxcui ? i + concept.rxcui : i}
               concept={concept} />
           ))}
         </section>
@@ -25,7 +25,7 @@ export default class AltConceptList extends Component {
           <h2>Generic Drugs</h2>
           {altConceptList[1].map((concept, i) => (
             <AltConceptListItem
-              key={i + concept.rxcui}
+              key={concept.rxcui ? i + concept.rxcui : i}
               concept={concept} />
           ))}
         </section>

@@ -16,13 +16,6 @@ export const fetchConcept = (concept) => {
     });
 };
 
-export const fetchNames = () => {
-  return axios.get(`https://rxnav.nlm.nih.gov/REST/displaynames`)
-    .then( res => {
-      console.log(res);
-    });
-};
-
 export const fetchAltConcept = (concept) => {
   let conceptID = concept.rxcui;
   let conceptGroups;

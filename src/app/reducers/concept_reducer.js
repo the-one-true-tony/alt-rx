@@ -8,6 +8,7 @@ import {
 const _defaultState = {
   concept: {},
   selected_concept: {},
+  errors: "",
   altConcept: [[],[]]
 };
 

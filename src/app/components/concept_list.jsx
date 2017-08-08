@@ -7,7 +7,8 @@ export default class ConceptList extends Component {
 
     this.state = {
       selectedOption: "",
-      collapseList: false
+      collapseList: false,
+      searched: false
     };
     this.updateSelected = this.updateSelected.bind(this);
     this.toggleCollapse = this.toggleCollapse.bind(this);
@@ -15,7 +16,8 @@ export default class ConceptList extends Component {
 
   componentWillReceiveProps(){
     this.setState({
-      collapseList: false
+      collapseList: false,
+      searched: true
     });
   }
   updateSelected(id){
@@ -33,9 +35,8 @@ export default class ConceptList extends Component {
   }
 
   render(){
-    let { conceptList, getAltConcept, loading } = this.props;
-    let { selectedOption, collapseList } = this.state;
-
+    let { conceptList, getAltConcept, loading, errors } = this.props;
+    let { selectedOption, collapseList, searched } = this.state;
     const collapseButton = (
       <span className="expand-button">
         <i className={ collapseList
@@ -45,7 +46,6 @@ export default class ConceptList extends Component {
           onClick={this.toggleCollapse}></i>
       </span>
     );
-
     if(loading){
       return(
         <section>
@@ -71,9 +71,17 @@ export default class ConceptList extends Component {
           { collapseButton }
         </section>
       );
+    } else if(searched === true && errors === ""){
+      return(
+        <div className="list-message">No entries were listed</div>
+      );
+    }else if(searched === false){
+      return(
+        <div className="list-message">Lets go find some drugs</div>
+      );
     } else {
       return(
-        <div>Lets go find some drugs</div>
+        <div></div>
       );
     }
   }

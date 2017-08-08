@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './css/app.css';
 import SearchBarContainer from './components/search_bar_container';
 import ConceptListContainer from './components/concept_list_container';

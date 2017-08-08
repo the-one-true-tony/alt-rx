@@ -6,7 +6,8 @@ import { altConceptListStartLoading } from '../actions/loading_actions';
 const mapStateToProps = ({ concept, loading }) => {
   return {
     conceptList: concept.concept,
-    loading: loading.conceptList
+    loading: loading.conceptList,
+    errors: concept.errors
   };
 };
 

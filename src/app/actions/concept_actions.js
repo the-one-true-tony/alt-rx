@@ -49,7 +49,3 @@ export const fetchAltConcept = (target) => dispatch => (
     .then(() => dispatch(altConceptListStopLoading()))
     .then(() => dispatch(selectConcept(target)))
 );
-
-export const fetchNames = () => (
-  APIUtil.fetchNames()
-);
