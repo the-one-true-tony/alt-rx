@@ -8,7 +8,7 @@ Alternative Medication, as it's name implies, lets users find alternatives to pr
 
 The app was created using Node.js, Javascript, React.js and Redux.js.  While Alternative Medication does not feature a backend of it's own, a sister site was created using Node.js, Express.js and Redis to create a fast autocomplete feature to help users search for drugs.
 
-The autocompleting site takes all of drug names from RxNorm and creates saves all prefixes to its database. The site can be found at
+The autocompleting site takes all of drug names from RxNorm and saves all prefixes to its database. The site can be found at
 
 Live: https://rxn-autofill.herokuapp.com/.
 
@@ -40,7 +40,7 @@ const bluebird = require('bluebird');
 bluebird.promisifyAll(redis.RedisClient.prototype);
 ```
 
-Then we could create a recursive looping function that will chain the promises until our desired outcome has been reached.
+Then we use a recursive looping function that will chain the promises until our desired outcome has been reached.
 
 ```
 let searchLoop = (start, loop = true) => {
