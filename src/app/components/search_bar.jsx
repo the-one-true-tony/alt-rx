@@ -60,10 +60,9 @@ export default class SearchBar extends Component {
         .then(conceptList => {
           this.setState({
             autocomplete: conceptList.data,
-            concept
           });
         });
-
+      this.setState({ concept });
     } else if (type === "autocomplete"){
       concept = event.currentTarget.innerHTML;
       this.setState({ concept });

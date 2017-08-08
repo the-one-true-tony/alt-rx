@@ -2,6 +2,8 @@
 
 Alternative Medication, as it's name implies, lets users find alternatives to prescriptions they are currently using.  The app relies on RxNorm's API to lookup drug names, active ingredients and alternatives.  A live version of the site can be found at https://alt-rx.herokuapp.com/.
 
+![Image of site](http://res.cloudinary.com/dkw3fxfzr/image/upload/v1502218050/gif03_uq4arv.gif)
+
 ## Technologies
 
 The app was created using Node.js, Javascript, React.js and Redux.js.  While Alternative Medication does not feature a backend of it's own, a sister site was created using Node.js, Express.js and Redis to create a fast autocomplete feature to help users search for drugs.
