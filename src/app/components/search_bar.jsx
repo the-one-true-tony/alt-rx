@@ -56,13 +56,13 @@ export default class SearchBar extends Component {
 
     if(type === "typing"){
       concept = event.currentTarget.value;
+      this.setState({ concept });
       axios.get(`https://rxn-autofill.herokuapp.com/api?name=${concept}`)
         .then(conceptList => {
           this.setState({
             autocomplete: conceptList.data,
           });
         });
-      this.setState({ concept });
     } else if (type === "autocomplete"){
       concept = event.currentTarget.innerHTML;
       this.setState({ concept });
