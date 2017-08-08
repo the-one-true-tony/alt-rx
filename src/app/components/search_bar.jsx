@@ -5,10 +5,9 @@ export default class SearchBar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      concept: "",
-      autocompleteOnFocus: false,
-      autocomplete: [],
-      conceptNames: []
+      concept: "",                  // concept selected
+      autocompleteOnFocus: false,   // checks textbox is in focus
+      autocomplete: []              // list of autocomplete list
     };
     this.updateSearchField = this.updateSearchField.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -21,8 +20,8 @@ export default class SearchBar extends Component {
   }
 
   handleKeyPress(e){
+    // searches concept if enter key is pressed.
     let { concept } = this.state;
-
     if(e.keyCode === 13 && concept !== ""){
       this.props.loadConceptList();
       this.props.getConcept(concept);
@@ -31,7 +30,8 @@ export default class SearchBar extends Component {
   }
 
   handleSearch(e){
-    if(e) e.preventDefault();
+    // searchs conpet if button is clicked.
+    e.preventDefault();
     let { concept } = this.state;
     if (concept !== ""){
       this.props.loadConceptList();
@@ -47,6 +47,11 @@ export default class SearchBar extends Component {
   }
 
   updateSearchField(event,type){
+    // handles updating the search field in two ways.
+    // 1. If words are being typed, call the autocomplete api and update
+    // the concept value.
+    // 2. If the field is updated by clicking on the autocomplete value
+    // update the concept value and search for the value immediately.
     let concept;
 
     if(type === "typing"){
@@ -54,10 +59,10 @@ export default class SearchBar extends Component {
       axios.get(`https://rxn-autofill.herokuapp.com/api?name=${concept}`)
         .then(conceptList => {
           this.setState({
-            autocomplete: conceptList.data
+            autocomplete: conceptList.data,
+            concept
           });
         });
-      this.setState({ concept });
 
     } else if (type === "autocomplete"){
       concept = event.currentTarget.innerHTML;
@@ -69,6 +74,8 @@ export default class SearchBar extends Component {
   render(){
     const { concept, autocomplete, autocompleteOnFocus } = this.state;
     let errors, autoCompleteList;
+
+    // load errors only if there are errors.
     if(this.props.errors){
       errors = (
         <section>
@@ -80,6 +87,8 @@ export default class SearchBar extends Component {
         </section>
       );
     }
+
+    // load autocomplete if autocomplete state is not empty.
     if(autocomplete.length > 0){
       autoCompleteList = (
         <section

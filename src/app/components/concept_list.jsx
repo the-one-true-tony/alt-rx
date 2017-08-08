@@ -6,9 +6,9 @@ export default class ConceptList extends Component {
     super(props);
 
     this.state = {
-      selectedOption: "",
-      collapseList: false,
-      searched: false
+      selectedOption: "",     // which concept has been selected
+      collapseList: false,    // state of the concept list
+      searched: false         // has a search been conducted
     };
     this.updateSelected = this.updateSelected.bind(this);
     this.toggleCollapse = this.toggleCollapse.bind(this);

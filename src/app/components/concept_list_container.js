@@ -14,7 +14,6 @@ const mapStateToProps = ({ concept, loading }) => {
 const mapDispatchToProps = (dispatch) => ({
   getAltConcept: concept => dispatch(fetchAltConcept(concept)),
   loadAltConceptList: () => dispatch(altConceptListStartLoading())
-  // selectConcept: concept => dispatch(selectConcept(concept))
 });
 
 export default connect(

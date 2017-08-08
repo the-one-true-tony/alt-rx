@@ -7,6 +7,9 @@ export default class AltConceptList extends Component {
     let { altConceptList, loading } = this.props;
     let altSCD, altSBD, altHeader;
 
+    // Only load lists if the altConceptList isn't empty.  The two lists
+    // are split between generic and brand drugs.  Either can load
+    // independantly.
     if(altConceptList[0].length > 0){
       altSCD = (
         <section className="alt-list">

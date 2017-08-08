@@ -5,6 +5,8 @@ export default class ConceptListItem extends Component {
     let { concept, selected, collapsed, selectConcept, updateSelected } = this.props;
 
     let klassName;
+    // load concept list with different styling dependent on the whether
+    // it has been selected or not.
 
     if(selected && selected === concept.rxcui){
       klassName =  "concept-item selected";
@@ -15,6 +17,8 @@ export default class ConceptListItem extends Component {
     }
 
     const update = () => {
+      // the list item uses these callbacks to tell the list whether
+      // it has been selected.
       selectConcept(concept);
       updateSelected(concept.rxcui);
     };

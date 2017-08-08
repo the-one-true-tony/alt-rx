@@ -3,6 +3,8 @@ export const CONCEPT_LIST_STOP_LOADING = 'CONCEPT_LIST_STOP_LOADING';
 export const ALT_CONCEPT_LIST_START_LOADING = 'ALT_CONCEPT_LIST_START_LOADING';
 export const ALT_CONCEPT_LIST_STOP_LOADING = 'ALT_CONCEPT_LIST_STOP_LOADING';
 
+// Simple actions to turn on and off the loading icon.
+
 export const conceptListStartLoading = () => ({
   type: CONCEPT_LIST_START_LOADING
 });
