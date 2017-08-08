@@ -2,7 +2,7 @@
 
 Alternative Medication, as it's name implies, lets users find alternatives to prescriptions they are currently using.  The app relies on RxNorm's API to lookup drug names, active ingredients and alternatives.  A live version of the site can be found at https://alt-rx.herokuapp.com/.
 
-![Image of site](http://res.cloudinary.com/dkw3fxfzr/image/upload/v1502218050/gif03_uq4arv.gif)
+![Image of site](http://res.cloudinary.com/dkw3fxfzr/image/upload/v1502218346/ezgif.com-resize_svn6pb.gif)
 
 ## Technologies
 
