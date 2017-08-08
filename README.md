@@ -9,7 +9,9 @@ The app was created using Node.js, Javascript, React.js and Redux.js.  While Alt
 The autocompleting site takes all of drug names from RxNorm and creates saves all prefixes to its database. The site can be found at
 
 Live: https://rxn-autofill.herokuapp.com/.
-Github:
+
+Github: https://github.com/the-one-true-tony/rxn-autofill
+
 Calls to it's API can be made by querying the name of the drug like so:
 
 https://rxn-autofill.herokuapp.com/api?name=alavert
